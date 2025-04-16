@@ -1,3 +1,5 @@
+
+--to find customer's owner id 
 SELECT 
 	 cust_name,
 	 order_date,
@@ -5,7 +7,7 @@ SELECT
 	 owner_id
 FROM 
 	 `double-reef-187606.aafiyatdb.smart_ordering` as so
-RIGHT JOIN 
+LEFT JOIN 
 	 `double-reef-187606.aafiyatdb.ownership_journey` as oj
 	ON 
 	  so.CUST_ID = oj.customer_id
@@ -14,6 +16,7 @@ WHERE
 
 
 
+--calculating total sales by month using CTE
 WITH monthly_sales_cte AS (
     SELECT 
         DATE_TRUNC(CAST(month AS DATE), MONTH) AS sales_month, 
