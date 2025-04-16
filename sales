@@ -1,0 +1,16 @@
+
+--Calculating total sales by month using CTE
+WITH monthly_sales_cte AS (
+    SELECT 
+        DATE_TRUNC(CAST(month AS DATE), MONTH) AS sales_month, 
+        SUM(MTD_SALES) AS total_monthly_sales
+    FROM 
+        `double-reef-187606.aafiyatdb.month sales hourly record`
+    GROUP BY 
+        sales_month
+)
+SELECT 
+    sales_month, 
+    total_monthly_sales
+FROM 
+    monthly_sales_cte;
