@@ -25,7 +25,7 @@ ORDER BY
 --calculation for revenue economy
 SELECT
     FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP(ORDER_DATE)) AS month, -- Extracts year and month
-    CAST(SUM(TOTAL_PRICE) / 0.56 AS FLOAT64) AS revenue_economy -- Corrected CAST syntax and alias
+    CAST(SUM(TOTAL_PRICE) / 0.56 AS FLOAT64) AS revenue_economy 
 FROM 
     `double-reef-187606.aafiyatdb.cam_purchase` cp
 GROUP BY
@@ -49,7 +49,7 @@ WITH smart_ordering AS (
 revenue_economy AS (
     SELECT
         FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP(ORDER_DATE)) AS month, -- Extracts year and month
-        CAST(SUM(TOTAL_PRICE) / 0.56 AS FLOAT64) AS revenue_economy -- Corrected CAST syntax and alias
+        CAST(SUM(TOTAL_PRICE) / 0.56 AS FLOAT64) AS revenue_economy 
     FROM 
         `double-reef-187606.aafiyatdb.cam_purchase`
     GROUP BY
@@ -66,3 +66,6 @@ ON
     so.month = re.month
 ORDER BY
     so.month;
+
+--Total Sales Agent = Smart Ordering + Revenue Economy
+--Total Sales Agent = ....(by month)
